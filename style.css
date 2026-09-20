@@ -1,0 +1,490 @@
+/* ==========================================================================
+   Variables de Lujo y Reset
+   ========================================================================== */
+:root {
+    --gold: #C5A059;         /* Oro champagne, símbolo de lujo */
+    --gold-hover: #D4AF37;
+    --dark: #121212;         /* Negro obsidiana, profundo y elegante */
+    --dark-grey: #1E1E1E;
+    --light-bg: #FAFAFA;     /* Blanco roto/marfil para evitar fatiga visual */
+    --text-dark: #2B2B2B;
+    --text-light: #FBFBFB;
+    --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.8;
+    background-color: var(--light-bg);
+}
+
+/* Tipografía Serif para encabezados (estilo revista/editorial) */
+h1, h2, h3, .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    margin: 0;
+}
+
+a { text-decoration: none; }
+ul { list-style: none; }
+
+/* ==========================================================================
+   Utilidades y Tipografía Fina
+   ========================================================================== */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.text-center { text-align: center; }
+
+/* Estilo "Eyebrow": Texto pequeño superior, espaciado, clásico en lujo */
+.eyebrow, .eyebrow-dark, .card-eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.eyebrow { color: var(--gold); }
+.eyebrow-dark { color: #888; }
+
+.section-title {
+    font-size: 3rem;
+    color: var(--dark);
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 60px auto;
+    font-weight: 300;
+}
+
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 60px; }
+
+/* ==========================================================================
+   Botones de Alto Estatus
+   ========================================================================== */
+.btn-gold, .btn-outline, .btn-outline-gold {
+    display: inline-block;
+    padding: 14px 35px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transition: var(--transition);
+    cursor: pointer;
+    border-radius: 0; /* Bordes cuadrados son más elegantes que los redondos */
+}
+
+.btn-gold {
+    background-color: var(--gold);
+    color: var(--dark);
+    border: 1px solid var(--gold);
+    font-weight: 500;
+}
+
+.btn-gold:hover {
+    background-color: transparent;
+    color: var(--gold);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--text-light);
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+}
+
+.btn-outline-gold {
+    background-color: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+
+.btn-outline-gold:hover {
+    background-color: var(--gold);
+    color: var(--dark);
+}
+
+/* ==========================================================================
+   Navegación
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 25px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(18, 18, 18, 0.85); /* Negro translúcido elegante */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.logo {
+    font-size: 2rem;
+    color: var(--text-light);
+    letter-spacing: 2px;
+}
+
+.logo span { color: var(--gold); font-style: italic; }
+
+.nav-links { display: flex; gap: 40px; }
+
+.nav-links a {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+/* Efecto de línea sutil al hacer hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--gold);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+/* ==========================================================================
+   Sección Hero (Portavoces del Lujo)
+   ========================================================================== */
+.hero {
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=2000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center 30%;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(18,18,18,0.4) 0%, rgba(18,18,18,0.8) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    color: var(--text-light);
+    max-width: 900px;
+    padding: 0 20px;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+.hero-content h1 {
+    font-size: 5.5rem;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #DDDDDD;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ==========================================================================
+   Experiencia (Minimalismo y Espacio en Blanco)
+   ========================================================================== */
+section { padding: 130px 0; }
+
+.experience { background-color: var(--light-bg); }
+
+.card-feature {
+    padding: 20px 10px;
+    border-top: 1px solid #E0E0E0; /* Estilo de grilla editorial */
+    text-align: left;
+    transition: var(--transition);
+}
+
+.card-feature:hover { border-top-color: var(--gold); }
+
+.feature-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.card-feature h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.card-feature p { color: #555; font-size: 0.95rem; }
+
+/* ==========================================================================
+   Tarjetas de Paquetes (Flip 3D Elegante)
+   ========================================================================== */
+.packages { background-color: var(--dark); } /* Fondo oscuro para resaltar el oro */
+
+.flip-card {
+    background-color: transparent;
+    width: 100%;
+    height: 550px; /* Tarjetas más altas, proporción de revista */
+    perspective: 1200px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1); /* Giro muy suave y elegante */
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Frente de la tarjeta */
+.flip-card-front {
+    justify-content: center;
+    color: white;
+}
+
+.front-overlay {
+    background: rgba(18, 18, 18, 0.3); /* Overlay sutil */
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: background 0.5s ease;
+}
+
+.flip-card-front:hover .front-overlay { background: rgba(18, 18, 18, 0.5); }
+
+.front-overlay h3 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+}
+
+.separator-line {
+    width: 40px;
+    height: 1px;
+    background-color: #FFF;
+    margin: 20px 0 40px;
+}
+
+.gold-line { background-color: var(--gold); }
+
+.btn-ver-detalles {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-bottom: 1px solid #FFF;
+    padding-bottom: 5px;
+}
+
+.gold-btn {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+}
+
+/* Reverso de la tarjeta */
+.flip-card-back {
+    background-color: var(--dark);
+    transform: rotateY(180deg);
+    justify-content: center;
+    padding: 50px 40px;
+    border: 1px solid rgba(197, 160, 89, 0.2); /* Borde dorado tenue */
+}
+
+.back-content h3 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    color: var(--text-light);
+}
+
+.flip-card-back .card-body {
+    text-align: left;
+    margin-bottom: 50px;
+    width: 100%;
+}
+
+/* Lista de detalles estilo Menú Gourmet */
+.flip-card-back .card-body li {
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.flip-card-back .card-body span {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    color: #CCC;
+}
+
+.flip-card-back .card-body em {
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: #FFF;
+}
+
+/* ==========================================================================
+   Botón Flotante de WhatsApp (Versión Lujo)
+   ========================================================================== */
+.whatsapp-float {
+    position: fixed;
+    width: 55px;
+    height: 55px;
+    bottom: 40px;
+    right: 40px;
+    background-color: var(--dark);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    text-align: center;
+    font-size: 26px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+    background-color: var(--gold);
+    color: var(--dark);
+    transform: translateY(-5px);
+}
+
+/* ==========================================================================
+   Pie de Página (Editorial)
+   ========================================================================== */
+footer {
+    background-color: var(--dark-grey);
+    color: #888;
+    padding: 80px 20px 30px;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 60px;
+}
+
+.footer-brand h3 {
+    font-size: 2.5rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.footer-quote blockquote {
+    font-size: 1.4rem;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold);
+    line-height: 1.6;
+    max-width: 700px;
+}
+
+.footer-bottom {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Animaciones & Responsividad
+   ========================================================================== */
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 20px;
+        background-color: rgba(18, 18, 18, 0.95);
+    }
+    
+    .nav-links { margin: 20px 0; gap: 20px; flex-wrap: wrap; justify-content: center;}
+    
+    .hero-content h1 { font-size: 3.5rem; }
+    
+    .flip-card { height: 500px; }
+    
+    .section-title { font-size: 2.2rem; }
+    
+    .whatsapp-float {
+        bottom: 20px; right: 20px;
+        width: 50px; height: 50px;
+    }
+}
